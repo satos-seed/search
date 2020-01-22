@@ -1,0 +1,28 @@
+<div class="body">
+	<div class="container">
+		<p class="notice">
+			<%= notice %>
+		</p>
+		<div class="row">
+			<h1>ユーザー一覧</h1>
+			<table class="table table-hover table-inverse">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Title</th>
+						<th>Opinion</th>
+						<th colspan="3"></th>
+					</tr>
+				</thead>
+				<tbody>
+				<% @users.each do |b| %>
+					<tr>
+				    	<td><%= link_to b.name, users_user_path(b.id) %></td>
+					    <td><%= b.profile %></td>
+					</tr>
+				<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>/
+</div>

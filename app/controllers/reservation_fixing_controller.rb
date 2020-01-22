@@ -1,0 +1,2 @@
+class ReservationFixingController < ApplicationController
+end

@@ -1,0 +1,23 @@
+<div class="body">
+	<div class="container">
+		<p class="notice">
+			<%= notice %>
+		</p>
+		<div class="row">
+			<h1>マイページ(Users#show)</h1>
+			<div class="table">
+				<%= @user.name %>
+			</div>
+			<div>
+				<%= @user.profile %>
+			</div>
+			<div>
+				<%= link_to "編集", edit_user_path(@user.id), class: 'btn-sm btn-success' %>
+				<%= link_to "パスワード編集", edit_user_registration_path %>
+			</div>
+			<div>
+				<%= link_to "予約確認", users_registration_path(@user.id)%>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+<div class="body">
+	<div class="container">
+		<p class="notice">
+			<%= notice %>
+		</p>
+		<div class="row">
+			<h1>台の新規登録</h1>
+			<%= form_for(@facility, {:url => stores_facilities_path}) do |f| %>
+				<label>
+					<%= f.select :table_status, Facility.table_status.keys.to_a, {} %>
+				</label>
+
+				<label>
+					<%= f.label :台番号 %>
+					<%= f.text_field :table_count %>
+				</label>
+
+				<label>
+					<%= f.label :機種選択 %>
+					<%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
+				</label>
+
+				<label>
+					<%= link_to "機種追加", stores_genres_path %>
+				</label>
+
+				<%= f.submit "登録" %>
+			<% end %>
+		</div>
+	</div>
+</div>

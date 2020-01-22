@@ -1,0 +1,13 @@
+<div class="body">
+	<div class="container">
+		<p class="notice">
+			<%= notice %>
+		</p>
+		<div class="field row">
+			<label for="genre_name">機種名</label><br>
+			<%= @genre.text_field :genre_name %><br>
+		</div>
+		<%= @genre.submit '変更' %><br>
+		<%= link_to"戻る", stores_genres_path %>
+	</div>
+</div>

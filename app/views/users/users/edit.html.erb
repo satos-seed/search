@@ -1,0 +1,23 @@
+<div class="body">
+	<div class="container">
+		<p class="notice">
+			<%= notice %>
+		</p>
+		<div class="row">
+			<h1>編集</h1>
+			<%= form_for (@user) do |f| %>
+
+			<div>
+				<%= f.label :名前 %>
+				<%= f.text_field :name, autocomplete: true %>
+			</div>
+
+			<div>
+				<%= f.label :紹介文 %>
+				<%= f.text_field :profile, autocomplete: true %>
+			</div>
+
+			<%= f.submit "変更" %>
+		</div>
+	</div>
+</div>

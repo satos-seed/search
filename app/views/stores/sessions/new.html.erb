@@ -1,0 +1,26 @@
+<h2>Log in</h2>
+
+<%= form_for(session, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <div class="field">
+    <%= f.label :店舗名 %>
+    <%= f.text_field :store_name, autocomplete: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :店舗番号 %>
+    <%= f.text_field :store_number, autocomplete: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "stores/shared/links" %>

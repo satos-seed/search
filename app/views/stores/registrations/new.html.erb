@@ -1,0 +1,64 @@
+<h2>店舗新規作成</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :店舗名 %>
+    <%= f.text_field :store_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :店舗番号 %>
+    <%= f.text_field :store_number, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Eメール %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :営業時間 %>
+    <%= f.text_field :business_hours, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :定休日 %>
+    <%= f.text_field :regular_holiday, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :住所 %>
+    <%= f.text_field :address, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :TEL %>
+    <%= f.text_field :phone_number, autofocus: true %>
+  </div>
+
+  <div class="fineld">
+    <%= f.label :店舗情報＆イベント情報 %>
+    <%= f.text_field :information, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード確認 %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "stores/shared/links" %>

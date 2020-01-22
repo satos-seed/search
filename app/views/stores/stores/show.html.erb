@@ -1,0 +1,39 @@
+<div class="body">
+	<div class="container">
+		<p class="notice">
+			<%= notice %>
+		</p>
+		<div class="row">
+			<h1>店舗(show)</h1>
+			<table>
+				<tr>
+					<td><%= @store.store_name %></td>
+				</tr>
+			</table>
+
+			<table class="table table-striped">
+				<tr>
+					<td>営業時間</td>
+					<td><%= @store.business_hours %></td>
+				</tr>
+				<tr>
+					<td>定休日</td>
+					<td><%= @store.regular_holiday %></td>
+				</tr>
+				<tr>
+					<td>住所</td>
+					<td><%= @store.address %></td>
+				</tr>
+				<tr>
+					<td>TEL</td>
+					<td><%= @store.phone_number %></td>
+				</tr>
+				
+				<tr>
+					<td>店舗情報＆イベント情報</td>
+					<td><%= @store.information %></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

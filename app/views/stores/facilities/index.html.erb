@@ -1,0 +1,71 @@
+<div class="body">
+	<div class="container">
+		<p class="notice">
+			<%= notice %>
+		</p>
+		<div class="row">
+			<h1>設備情報(index)</h1>
+
+			<table class="table table-striped">ダーツ
+			<% if table_status == 1 %>
+				<thead>
+					<tr>
+						<td>台番号</td>
+						<td>機種名</td>
+						<td>現状</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= @facility.table_count %></td>
+						<td><%= @facility.genre_id %></td>
+						<td><%= f.select :progress, Facility.progress.keys.to_a, {} %></td>
+						<td><%= link_to "編集", edit_stores_facility_path(@facility.id), class: "btn btn-primary" %></td>
+						<td><%= link_to "削除", stores_facility_path(@facility.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+					</tr>
+				</tbody>
+			</table>
+			<% elsif table_status == 2 %>
+				
+			<table class="table table-striped">ビリヤード
+				<thead>
+					<tr>
+						<td>台番号</td>
+						<td>現状</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= @facility.table_count %></td>
+						<td><%= f.select :progress, Facility.progress.keys.to_a, {} %></td>
+						<td><%= link_to "編集", edit_stores_facility_path(@facility.id), class: "btn btn-primary" %></td>
+						<td><%= link_to "削除", stores_facility_path(@facility.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+					</tr>
+				</tbody>
+			</table>
+			<% else %>
+			<table class="table table-striped">その他
+				<thead>
+					<tr>
+						<td>番号</td>
+						<td>現状</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= @facility.table_count %></td>
+						<td><%= f.select :progress, Facility.progress.keys.to_a, {} %></td>
+						<td><%= link_to "編集", edit_stores_facility_path(@facility.id), class: "btn btn-primary" %></td>
+						<td><%= link_to "削除", stores_facility_path(@facility.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

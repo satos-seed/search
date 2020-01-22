@@ -10,6 +10,64 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-default navbar-inverse">
+        <div class="container">
+          <nav class="nav navbar-nav navbar-left">
+            <span></span>
+          </nav>
+          <% if user_signed_in? %>
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <span><%= link_to current_user.name, user_path(current_user) %></span>
+
+              <span><%= link_to "About", homes_about_path %></span>
+
+              <span><%= link_to "ログアウト", destroy_user_session_path ,method: :delete %></span>
+            </ul>
+          </nav>
+          <% elsif store_signed_in? %>
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <span><%= link_to current_store.store_name, stores_store_path(current_store.id) %></span>
+
+              <span><%= link_to "About", homes_about_path %></span>
+
+              <span><%= link_to "機種一覧", stores_genres_path %></span>
+
+              <span><%= link_to "台の新規作成", new_stores_facility_path %></span>
+
+              <span><%= link_to "ログアウト", destroy_store_session_path ,method: :delete %></span>
+          </nav>
+          <% else %>
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <span><%= link_to "新規ユーザー登録", new_user_registration_path%></span>
+
+              <span><%= link_to "新規店舗登録", new_store_registration_path %></span>
+
+              <span><%= link_to "ユーザーログイン", new_user_session_path %></span>
+
+              <span><%= link_to "店舗ログイン", new_store_session_path %></span>
+
+              <span><%= link_to "About", homes_about_path %></span>
+            </ul>
+          </nav>
+          <% end %>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-3 col-xs-offset-9">
+            <p>
+              
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

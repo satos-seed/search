@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
 	    root_path # ログアウト後に遷移するpathを設定
     end
 
+    def authenticate_user
+    	if @current_user == nil
+    		redirect_to("/login")
+    	end
+    end
+
 	protected
 	def configure_permitted_parameters
 		devise_parameter_sanitizer.permit(:sign_up, keys: [:store_name, :store_number, :phone_number, :address, :business_hours, :regular_holiday])

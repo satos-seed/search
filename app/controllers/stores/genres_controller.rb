@@ -1,4 +1,5 @@
 class Stores::GenresController < ApplicationController
+	#before_action :authenticate_user
 
 	def index
 		@genre = Genre.new

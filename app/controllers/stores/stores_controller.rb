@@ -1,4 +1,5 @@
 class Stores::StoresController < ApplicationController
+	#before_action :authenticate_user, {only: [:edit, :update]}
 
 	def top
 		@store = Store.find(params[:id])
@@ -40,6 +41,12 @@ class Stores::StoresController < ApplicationController
 
 	def facility_params
 		params.require(:facility).permit(:table_count, :darte_table, :billiard_table, :genre_id, :progress)
+	end
+
+	def authenticate_user
+		if @current_user == nil
+			redirect_to("/login")
+		end
 	end
 
 end

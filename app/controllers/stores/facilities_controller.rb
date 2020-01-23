@@ -1,4 +1,5 @@
 class Stores::FacilitiesController < ApplicationController
+	#before_action :authenticate_user, {only: [:new, :edit, :update]}
 	def new
 		@facility = Facility.new
 	end
@@ -11,19 +12,23 @@ class Stores::FacilitiesController < ApplicationController
 	end
 
 	def index
+		#@facility = Facility.find(params[:id])
 		@facilities = Facility.all
 	end
 
 	def create
 		@facility = Facility.new(facility_params)
-		@facility.save
-		redirect_to stores_facilities_path
+		if @facility.save
+			redirect_to stores_facilities_path
+		else
+			render :new
+		end
 	end
 
 	def update
 		@facility = Facility.find(params[:id])
 		if @facility.update(facility_params)
-			redirect_to stores_facility_path
+			redirect_to stores_facilities_path
 		else
 			render :edit
 		end
@@ -32,6 +37,6 @@ class Stores::FacilitiesController < ApplicationController
 	private
 
 	def facility_params
-		params.require(:facility).permit(:table_count, :table_number, :genre_id, :progress, :store_id)
+		params.require(:facility).permit(:table_count, :table_status, :genre_status, :progress, :genre_id, :store_id)
 	end
 end

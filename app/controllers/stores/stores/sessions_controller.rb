@@ -8,6 +8,10 @@ class Stores::Stores::SessionsController < Devise::SessionsController
     super
   end
 
+  def after_sign_in_path_for(resource)
+    stores_store_path(current_store) # ログイン後に遷移するpathを設定
+  end
+
   # POST /resource/sign_in
   def create
     super
@@ -22,6 +26,6 @@ class Stores::Stores::SessionsController < Devise::SessionsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute, :store_name, :store_number])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:store_mane, :store_numbae])
   end
 end

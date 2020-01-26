@@ -3,11 +3,21 @@
 		<p class="notice">
 			<%= notice %>
 		</p>
+
+		<% if @facility.errors.any? %>
+		  <div id="error_explanation" class="alert alert-danger">
+		    <ul>
+		      <% @facility.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		    </ul>
+		  </div>
+		<% end %>
 		<div class="row">
 			<h1>台の新規登録</h1>
 			<%= form_for(@facility, {:url => stores_facilities_path}) do |f| %>
 				<label>
-					<%= f.select :table_status, Facility.genre_statuses.keys.to_a, {} %>
+					<%= f.select :table_status, Facility.table_statuses.keys, {}, {class: 'hoge'} %>
 				</label>
 
 				<label>
@@ -21,7 +31,7 @@
 				</label>
 
 				<label>
-					<%= f.select :progress, Facility.statuses.keys.to_a, {} %>
+					<%= f.select :progress, Facility.progresses.keys.to_a, {} %>
 				</label>
 
 				<label>

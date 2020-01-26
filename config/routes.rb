@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   	registrations: 'stores/stores/registrations'
   }
   namespace :stores do
-  	resources :stores, only: [:top, :show, :edit, :update, :destroy]
+  	resources :stores, only: [:top, :index, :show, :edit, :update, :destroy]
     get '/stores/top' => 'stores#top'
   	resources :genres, only: [:index, :create, :edit, :update, :destroy]
   	resources :facilities, only: [:new, :index, :create, :edit, :update, :destroy]
@@ -18,9 +18,11 @@ Rails.application.routes.draw do
   	registrations: 'users/users/registrations'
   }
   resources :homes, only: [:top, :about]
-  
+  namespace :users do
+    resources :users, only: [:show, :edit, :update, :destroy]
+  end
   get '/homes/about' => 'homes#about'
-  resources :users, only: [:show, :edit, :update, :destroy]
+  
   resources :reservations, only: [:new, :index, :show, :edit, :update, :destroy]
   resources :reservation_fixings, only: [:index, :show, :destroy]
   root 'homes#top'

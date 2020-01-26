@@ -5,6 +5,7 @@ class Stores::FacilitiesController < ApplicationController
 	end
 
 	def edit
+		@facility = Facility.find(params[:id])
 	end
 	
 	def show
@@ -17,7 +18,10 @@ class Stores::FacilitiesController < ApplicationController
 	end
 
 	def create
+		#byebug
 		@facility = Facility.new(facility_params)
+		# byebug
+		@facility.store_id = current_store.id 
 		if @facility.save
 			redirect_to stores_facilities_path
 		else
@@ -27,12 +31,19 @@ class Stores::FacilitiesController < ApplicationController
 
 	def update
 		@facility = Facility.find(params[:id])
+
 		if @facility.update(facility_params)
 			redirect_to stores_facilities_path
 		else
 			render :edit
 		end
 	end
+
+	def destroy
+		@facility = Facility.find(params[:id])
+		@facility.destroy
+		redirect_to stores_facilities_path
+end
 
 	private
 

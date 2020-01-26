@@ -3,27 +3,18 @@
 		<p class="notice">
 			<%= notice %>
 		</p>
+
 		<div class="row">
 			<h1>設備情報、編集</h1>
-			<%= form_for (@facility) do |f| %>
+			<%= form_for(@facility, {:url => stores_facility_path}) do |f| %>
 
-			<% if table_status == 1 %>
-			<div class="darts">ダーツ
-				<%= f.table_count %>
+			
+			<label for="table_count">台番号</label>
+				<%=f.text_field :table_count%>
 				<%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
-			</div>
-
-			<% elsif table_status == 2 %>	
-			<div class="billiard">ビリヤード
-				<%= f.table_count %>
-				<%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
-			</div>
-			<% else %>
-			<div class="Other">その他
-				<%= f.table_count %>
-				<%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
-			</div>
-			<% end %>
+				<%= f.select :progress, Facility.progresses.keys.to_a, {} %>
+				<%= f.submit '変更' %>
+			
 			<% end %>
 		</div>
 	</div>

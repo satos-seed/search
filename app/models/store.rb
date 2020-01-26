@@ -3,9 +3,9 @@ class Store < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :facilities
+  has_many :holder, class_name: 'Facilities', foreign_key: 'facility_id'
 
-  validates :name, length: { :minimum => 2, :maximum => 20 }
+  # validates :name, length: { :minimum => 2, :maximum => 20 }
 
   def self.search(search) #ここでのself.はStore.を意味する
     if search

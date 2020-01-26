@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :name, length: { :minimum => 2, :maximum => 20 }
+  #validates :name, length: { :minimum => 2, :maximum => 20 }
   def update_without_current_password(params, *options)
   	params.delete(:current_password)
   	if params[:password].blank? && params[:password_confirmation].blank?

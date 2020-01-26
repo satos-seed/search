@@ -14,9 +14,15 @@ class Stores::StoresController < ApplicationController
 		end	
 	end
 
+	def index
+		@stores = Store.all
+	end
+
 	def show
 		@store = Store.find(params[:id])
-		
+		# @facility = @facility.store
+		# @facility.store = Store.find(params[:id])
+
 	end
 
 	def esit
@@ -44,7 +50,7 @@ class Stores::StoresController < ApplicationController
 	end
 
 	def authenticate_user
-		if @current_user == nil
+		if @current_store == nil
 			redirect_to("/login")
 		end
 	end

@@ -3,7 +3,7 @@
 		<p class="notice">
 			<%= notice %>
 		</p>
-		<%= form_for(@genre)do |f| %>
+		<%= form_for(@genre, {:url => stores_genre_path})do |f| %>
 		<div class="field row">
 			<label for="genre_name">機種名</label><br>
 			<%= f.text_field :genre_name %><br>

@@ -14,9 +14,14 @@ class ApplicationController < ActionController::Base
 
 	protected
 	def configure_permitted_parameters
-		devise_parameter_sanitizer.permit(:sign_up, keys: [:store_name, :store_number, :phone_number, :address, :business_hours, :regular_holiday])
-		devise_parameter_sanitizer.permit(:account_update, keys: [:store_name, :store_number, :phone_number, :address, :business_hours, :regular_holiday, :information, :email])
-		devise_parameter_sanitizer.permit(:account_create, keys: [:store_name, :store_number, :phone_number, :address, :business_hours, :regular_holiday, :information, :email])
+		store_parameter_cols = [:store_name, :store_number, :phone_number, :address, :business_hours, :regular_holiday, :information]
+		user_parameter_cols = [:name]
+		
+		parameter_parameters = params[:store] ? store_parameter_cols : user_parameter_cols  #store以外のパラメーターが来るとuser扱いになってしまう
+		# devise_parameter_sanitizer.permit(:sign_up, keys: [:store_name, :store_number, :phone_number, :address, :business_hours, :regular_holiday, :information, :name])
+		devise_parameter_sanitizer.permit(:sign_up, keys: parameter_parameters)
+		devise_parameter_sanitizer.permit(:account_update, keys: [:store_name, :store_number, :phone_number, :address, :business_hours, :regular_holiday, :information])
+		devise_parameter_sanitizer.permit(:account_create, keys: parameter_parameters)
 		devise_parameter_sanitizer.permit(:sign_in, keys: [:store_number])
     end
 end

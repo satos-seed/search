@@ -1,49 +1,51 @@
 <div class="body">
-	<div class="container">
+	<div class="bg-success">
 		<p class="notice">
 			<%= notice %>
 		</p>
 		<div class="row">
 			<h1>設備情報(index)</h1>
 			<% @facilities.each do |facility| %>
-			<% if facility.genre_status == "ダーツ" %>
+			<% if facility.table_status == "ダーツ" %>
 			<table class="table table-striped">ダーツ
 				<thead>
 					<tr>
-						<td>台番号</td>
-						<td>機種名</td>
-						<td>現状</td>
-						<td></td>
-						<td></td>
+						<th>台番号</th>
+						<th>機種名</th>
+						<th>現状</th>
+						<th></th>
+						<th colspan="5"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td><%= facility.table_count %></td>
 						<td><%= facility.genre_id %></td>
-						<td><%= facility.select :progress, Facility.progress.keys.to_a, {} %></td>
-						<td><%= link_to "編集", edit_stores_facility_path(@facility.id), class: "btn btn-primary" %></td>
-						<td><%= link_to "削除", stores_facility_path(@facility.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+						<td><button class="text-danger"><%= facility.progress %></button></td>
+						<td><%= link_to "編集", edit_stores_facility_path(facility.id), class: "btn btn-primary" %></td>
+						<td><%= link_to "削除", stores_facility_path(facility.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
 					</tr>
 				</tbody>
 			</table>
 
-			<% elsif facility.genre_status == "ビリヤード" %>
+			<% elsif facility.table_status == "ビリヤード" %>
 			<table class="table table-striped">ビリヤード
 				<thead>
 					<tr>
-						<td>台番号</td>
-						<td>現状</td>
-						<td></td>
-						<td></td>
+						<th>台番号</th>
+						<th>種類</th>
+						<th>現状</th>
+						<th></th>
+						<th colspan="5"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td><%= @facilities.table_count %></td>
-						<td><%= f.select :progress, Facility.progress.keys.to_a, {} %></td>
-						<td><%= link_to "編集", edit_stores_facility_path(@facility.id), class: "btn btn-primary" %></td>
-						<td><%= link_to "削除", stores_facility_path(@facility.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+						<td><%= facility.table_count %></td>
+						<td><%= facility.genre_id %></td>
+						<td><button class="text-danger"><%= facility.progress %></button></td>
+						<td><%= link_to "編集", edit_stores_facility_path(facility.id), class: "btn btn-primary" %></td>
+						<td><%= link_to "削除", stores_facility_path(facility.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
 					</tr>
 				</tbody>
 			</table>
@@ -51,18 +53,18 @@
 			<table class="table table-striped">その他
 				<thead>
 					<tr>
-						<td>番号</td>
-						<td>現状</td>
-						<td></td>
-						<td></td>
+						<th>番号</th>
+						<th>現状</th>
+						<th></th>
+						<th colspan="4"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td><%= @facilities.table_count %></td>
-						<td><%= f.select :progress, Facility.progress.keys.to_a, {} %></td>
-						<td><%= link_to "編集", edit_stores_facility_path(@facility.id), class: "btn btn-primary" %></td>
-						<td><%= link_to "削除", stores_facility_path(@facility.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+						<td><%= facility.table_count %></td>
+						<td><button class="text-danger"><%= facility.progress %></button></td>
+						<td><%= link_to "編集", edit_stores_facility_path(facility.id), class: "btn btn-primary" %></td>
+						<td><%= link_to "削除", stores_facility_path(facility.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
 					</tr>
 				</tbody>
 			</table>

@@ -12,12 +12,17 @@
 				<%= @user.profile %>
 			</div>
 			<div>
-				<%= link_to "編集", edit_user_path(@user.id), class: 'btn-sm btn-success' %>
+				<%= link_to "編集", edit_users_user_path(@user.id), class: 'btn-sm btn-success' %>
 				<%= link_to "パスワード編集", edit_user_registration_path %>
 			</div>
 			<div>
-				<%= link_to "予約確認", users_registration_path(@user.id)%>
+				<!--%= link_to "予約確認", users_registration_path(@user.id)%-->
 			</div>
+			<h2>検索</h2>
+			<%= form_tag(stores_stores_path, method: :get) do %>
+				<%= text_field_tag :search %>
+				<%= submit_tag '検索', name: nil %>
+			<% end %>
 		</div>
 	</div>
 </div>

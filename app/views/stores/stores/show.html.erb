@@ -4,13 +4,11 @@
 			<%= notice %>
 		</p>
 		<div class="row">
-			<h1>店舗(show)</h1>
-			<table>
-				<tr>
-					<td><%= @store.store_name %></td>
-				</tr>
-			</table>
-
+			<h1><%= @store.store_name %></h1>
+			<% if @store == current_store %>
+			<%= link_to "編集", edit_stores_store(@store.id) %>
+			<% end %>
+			
 			<table class="table table-striped">
 				<tr>
 					<td>営業時間</td>
@@ -34,7 +32,8 @@
 					<td><%= @store.information %></td>
 				</tr>
 				<tr>
-					 <td><<!--%= link_to "台の状況", stores_facility_path(@facility.id) %> --></td>
+					 <td>設備</td>
+					 <td><%= @facilities %></td>
 				</tr>
 			</table>
 		</div>

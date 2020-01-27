@@ -20,7 +20,7 @@ class Stores::StoresController < ApplicationController
 
 	def show
 		@store = Store.find(params[:id])
-		# @facility = @facility.store
+		@facilities = @store.facilities
 		# @facility.store = Store.find(params[:id])
 
 	end

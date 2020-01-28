@@ -10,7 +10,7 @@ class Stores::StoresController < ApplicationController
 		if @store.save
 			redirect_to stores_store_path(@store.id)
 		else
-			render :new
+			render :edit
 		end	
 	end
 
@@ -20,12 +20,11 @@ class Stores::StoresController < ApplicationController
 
 	def show
 		@store = Store.find(params[:id])
-		@facilities = @store.facilities
-		# @facility.store = Store.find(params[:id])
+		# @facilities = @store.facilities
 
 	end
 
-	def esit
+	def edit
 		@store = Store.find(params[:id])
 	end
 

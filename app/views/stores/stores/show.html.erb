@@ -6,7 +6,7 @@
 		<div class="row">
 			<h1><%= @store.store_name %></h1>
 			<% if @store == current_store %>
-			<%= link_to "編集", edit_stores_store(@store.id) %>
+			<%= link_to "編集", edit_stores_store_path(current_store) %>
 			<% end %>
 			
 			<table class="table table-striped">
@@ -31,11 +31,48 @@
 					<td>店舗情報＆イベント情報</td>
 					<td><%= @store.information %></td>
 				</tr>
-				<tr>
-					 <td>設備</td>
-					 <td><%= @facilities %></td>
-				</tr>
 			</table>
+			<%# @facilities.each do |facility| %>
+			<%# if current_store == @store.id %>
+			<!-- <table class="table table-striped"> -->
+				<!-- <thead> -->
+					<!-- <tr> -->
+						<!-- <th>台番号</th> -->
+						<!-- <th>機種名</th> -->
+						<!-- <th>現状</th> -->
+						<!-- <th></th> -->
+						<!-- <th colspan="5"></th> -->
+					<!-- </tr> -->
+				<!-- </thead> -->
+				<!-- <tbody> -->
+					<!-- <tr> -->
+						<!-- <td><%#= facility.table_count %></td> -->
+						<!-- <td><%#= facility.genre.genre_name %></td> -->
+						<!-- <td><button class="text-danger"><%#= facility.progress %></button></td> -->
+						 <!-- <td><%#= link_to "編集", edit_stores_facility_path(facility.id), class: "btn btn-primary" %></td> -->
+						 <!-- <td><%#= link_to "削除", stores_facility_path(facility.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td> -->
+					<!-- </tr> -->
+				<!-- </tbody> -->
+			<!-- </table> -->
+			 <%# else %>
+			<!-- <table class="table table-striped"> -->
+				<!-- <thead> -->
+					<!-- <tr> -->
+						<!-- <th>台番号</th> -->
+						<!-- <th>機種名</th> -->
+						<!-- <th>現状</th> -->
+					<!-- </tr> -->
+				<!-- </thead> -->
+				<!-- <tbody> -->
+					<!-- <tr> -->
+						<!-- <td><%#= facility.table_count %></td> -->
+						<!-- <td><%#= facility.genre.genre_name %></td> -->
+						<!-- <td><button class="text-danger"><%#= facility.progress %></button></td> -->
+					<!-- </tr> -->
+				<!-- </tbody> -->
+			<!-- </table> -->
+			 <%# end %>
+			 <%# end %>
 		</div>
 	</div>
 </div>

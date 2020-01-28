@@ -20,7 +20,7 @@
 				<tbody>
 					<tr>
 						<td><%= facility.table_count %></td>
-						<td><%= facility.genre_id %></td>
+						<td><%= facility.genre.genre_name %></td>
 						<td><button class="text-danger"><%= facility.progress %></button></td>
 						<td><%= link_to "編集", edit_stores_facility_path(facility.id), class: "btn btn-primary" %></td>
 						<td><%= link_to "削除", stores_facility_path(facility.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
